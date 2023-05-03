@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Layout.module.scss";
 import Sidebar from "../Sidebar";
 import Navbar from "../Navbar";
 
@@ -7,7 +8,7 @@ const Layout = ({ children }) => {
     <div>
       <Sidebar />
       <Navbar />
-      {children}
+      <div className={styles["layout-container"]}>{children}</div>
     </div>
   );
 };
