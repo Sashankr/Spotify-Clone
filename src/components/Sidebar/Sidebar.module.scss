@@ -4,5 +4,19 @@
   height: 100vh;
   padding: 1rem 2rem;
 
-  &__logo {}
+  &__logo {
+    width: 9rem;
+    margin-bottom: 2rem;
+  }
+
+  &__logo-container {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 0 1rem;
+
+    span {
+      color: #fff;
+    }
+  }
 }
