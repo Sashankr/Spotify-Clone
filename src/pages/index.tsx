@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import SongCard from "../components/SongCard";
-import styles from "@/styles/Home.module.css";
+import styles from "@/styles/Home.module.scss";
 import { homePageSongsList } from "../helpers/mock";
 
 export default function Home() {
@@ -13,19 +13,21 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+      <main className={styles.home}>
         <h1>Recently played</h1>
-        {homePageSongsList.map((item) => {
-          return (
-            <SongCard
-              key={item.id}
-              imageSrc={item.imageSource}
-              songName={item.name}
-              artistName={item.artist}
-              songSource={item.source}
-            />
-          );
-        })}
+        <section className={styles["home__recently-played"]}>
+          {homePageSongsList.map((item) => {
+            return (
+              <SongCard
+                key={item.id}
+                imageSrc={item.imageSource}
+                songName={item.name}
+                artistName={item.artist}
+                songSource={item.source}
+              />
+            );
+          })}
+        </section>
       </main>
     </>
   );
