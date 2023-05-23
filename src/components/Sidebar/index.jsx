@@ -32,7 +32,7 @@ const Sidebar = () => {
         </svg>
         <span>Home</span>
       </div>
-      <div className={styles["sidebar__logo-container"]}>
+      {/* <div className={styles["sidebar__logo-container"]}>
         <svg
           role="img"
           height="24"
@@ -65,7 +65,7 @@ const Sidebar = () => {
           ></path>
         </svg>
         <span>Your library</span>
-      </div>
+      </div> */}
     </div>
   );
 };
