@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
+import SongCard from "../components/SongCard";
 import styles from "@/styles/Home.module.css";
+import { homePageSongsList } from "../helpers/mock";
 
 export default function Home() {
   return (
@@ -13,6 +15,17 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <h1>Recently played</h1>
+        {homePageSongsList.map((item) => {
+          return (
+            <SongCard
+              key={item.id}
+              imageSrc={item.imageSource}
+              songName={item.name}
+              artistName={item.artist}
+              songSource={item.source}
+            />
+          );
+        })}
       </main>
     </>
   );

@@ -1,32 +1,41 @@
 export const homePageSongsList = [
   {
+    id: 1,
     name: "Storm Clouds",
-    source: "/public/songs/storm-clouds-purpple-cat.mp3",
-    imageSource: "/public/song-1.jpg",
+    source: "/static/songs/storm-clouds-purpple-cat.mp3",
+    imageSource: "/static/song-1.jpg",
     artist: "Purple Cat",
   },
   {
+    id: 2,
+
     name: "Still Awake",
-    source: "/public/songs/Still-Awake-Lofi-Study-Music.mp3",
-    imageSource: "/public/song-2.jpg",
+    source: "/static/songs/Still-Awake-Lofi-Study-Music.mp3",
+    imageSource: "/static/song-2.jpg",
     artist: "Ghostrifter Official",
   },
   {
+    id: 3,
+
     name: "Morning Routine",
-    source: "/public/songs/Morning-Routine-Lofi-Study-Music.mp3",
-    imageSource: "/public/song-3.jpg",
+    source: "/static/songs/Morning-Routine-Lofi-Study-Music.mp3",
+    imageSource: "/static/song-3.jpg",
     artist: "Ghostrifter Official",
   },
   {
+    id: 4,
+
     name: "Heart Of The Ocean",
-    source: "/public/songs/Heart-Of-The-Ocean.mp3",
-    imageSource: "/public/song-4.jpg",
+    source: "/static/songs/Heart-Of-The-Ocean.mp3",
+    imageSource: "/static/song-4.jpg",
     artist: "Purple Cat",
   },
   {
+    id: 5,
+
     name: "City Lights",
-    source: "/public/songs/Ghostrifter-Official-City-Lights.mp3",
-    imageSource: "/public/song-5.jpg",
+    source: "/static/songs/Ghostrifter-Official-City-Lights.mp3",
+    imageSource: "/static/song-5.jpg",
     artist: "Ghostrifter Official",
   },
 ];
