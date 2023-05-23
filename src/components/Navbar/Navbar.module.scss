@@ -2,5 +2,23 @@
     position: fixed;
     top: 0;
     left: 240px;
+    padding: 1rem;
+
+    &__navigate {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    &__navigate-icon {
+        color: #fff;
+        background: #000;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
 
 }

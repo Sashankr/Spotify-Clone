@@ -6,8 +6,12 @@ const Navbar = () => {
     <div className={styles.navbar}>
       <nav>
         <section className={styles["navbar__navigate"]}>
-          <i class="fa-solid fa-chevron-left"></i>
-          <i class="fa-solid fa-chevron-right"></i>
+          <i
+            className={`fa-solid fa-chevron-left ${styles["navbar__navigate-icon"]}`}
+          ></i>
+          <i
+            className={`fa-solid fa-chevron-right ${styles["navbar__navigate-icon"]}`}
+          ></i>
         </section>
       </nav>
     </div>
