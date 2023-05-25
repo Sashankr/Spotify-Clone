@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import styles from "./SongCard.module.scss";
 import Image from "next/image";
 import {
+  playCurrentSong,
   updateCurrentSong,
-  updatePlayState,
 } from "@/redux/features/songs/currentSongSlice";
 
 const SongCard = ({ imageSrc, songSource, songName, artistName }) => {
@@ -19,7 +19,7 @@ const SongCard = ({ imageSrc, songSource, songName, artistName }) => {
         songThumbnail: imageSrc,
       })
     );
-    dispatch(updatePlayState());
+    dispatch(playCurrentSong());
   };
 
   return (

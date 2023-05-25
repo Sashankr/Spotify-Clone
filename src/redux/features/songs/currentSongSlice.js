@@ -20,15 +20,22 @@ export const currentSongSlice = createSlice({
         currentSong: action.payload,
       };
     },
-    updatePlayState: (state, action) => {
+    playCurrentSong: (state, action) => {
       return {
         ...state,
-        isSongPlaying: !state.isSongPlaying,
+        isSongPlaying: true,
+      };
+    },
+    pauseCurrentSong: (state, action) => {
+      return {
+        ...state,
+        isSongPlaying: false,
       };
     },
   },
 });
 
-export const { updateCurrentSong, updatePlayState } = currentSongSlice.actions;
+export const { updateCurrentSong, playCurrentSong, pauseCurrentSong } =
+  currentSongSlice.actions;
 
 export default currentSongSlice.reducer;
