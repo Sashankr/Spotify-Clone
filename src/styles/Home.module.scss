@@ -1,6 +1,7 @@
 .home {
-    &__recently-played {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-    }
+  &__recently-played {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
 }
