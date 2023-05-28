@@ -21,7 +21,7 @@ const Sidebar = () => {
           height="24"
           width="24"
           aria-hidden="true"
-          class="Svg-sc-ytk21e-0 ldgdZj home-active-icon"
+          className="Svg-sc-ytk21e-0 ldgdZj home-active-icon"
           viewBox="0 0 24 24"
           data-encore-id="icon"
         >
@@ -38,7 +38,7 @@ const Sidebar = () => {
           height="24"
           width="24"
           aria-hidden="true"
-          class="Svg-sc-ytk21e-0 ldgdZj search-icon"
+          className="Svg-sc-ytk21e-0 ldgdZj search-icon"
           viewBox="0 0 24 24"
           data-encore-id="icon"
         >
@@ -55,7 +55,7 @@ const Sidebar = () => {
           height="24"
           width="24"
           aria-hidden="true"
-          class="Svg-sc-ytk21e-0 ldgdZj collection-icon"
+          className="Svg-sc-ytk21e-0 ldgdZj collection-icon"
           viewBox="0 0 24 24"
           data-encore-id="icon"
         >
