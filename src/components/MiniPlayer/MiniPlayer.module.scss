@@ -42,4 +42,19 @@
     display: flex;
     gap: 1rem;
   }
+  &__volume-control-container {
+    position: relative;
+    width: 200px;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  &__volume-control {
+    opacity: 0;
+    transition: 0.4s ease;
+  }
+
+  &__volume-control.active {
+    opacity: 1;
+  }
 }

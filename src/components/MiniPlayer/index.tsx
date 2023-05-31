@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import style from "./MiniPlayer.module.scss";
 import Image from "next/image";
@@ -6,9 +6,13 @@ import Image from "next/image";
 const MiniPlayer = () => {
   const playerRef = useRef();
   const songDetails = useSelector((state) => state.currentSong);
+  const [showVolumeControl, setShowVolumeControl] = useState();
+  const [playerVolume, setPlayerVolume] = useState(50);
 
   const { name, artistName, songLink, songThumbnail } = songDetails.currentSong;
   const isSongPlaying = songDetails.isSongPlaying;
+
+  console.log(playerVolume);
 
   useEffect(() => {
     if (playerRef.current !== undefined) {
@@ -19,6 +23,12 @@ const MiniPlayer = () => {
       }
     }
   }, [isSongPlaying, songLink]);
+
+  useEffect(() => {
+    if (playerRef.current !== undefined) {
+      playerRef.current.volume = playerVolume / 100;
+    }
+  }, [playerVolume]);
 
   if (name === "") {
     return (
@@ -48,7 +58,31 @@ const MiniPlayer = () => {
       </div>
       <div className={style["mini-player__additional-controls"]}>
         <i className="fa-solid fa-list"></i>
-        <i className="fa-solid fa-volume-low"></i>
+        <div
+          onMouseEnter={() => {
+            setShowVolumeControl(true);
+          }}
+          onMouseLeave={() => {
+            setShowVolumeControl(false);
+          }}
+          className={style["mini-player__volume-control-container"]}
+        >
+          <i className="fa-solid fa-volume-low"></i>
+          <input
+            className={`${
+              showVolumeControl
+                ? style["mini-player__volume-control active"]
+                : style["mini-player__volume-control"]
+            } `}
+            type="range"
+            min={0}
+            max={100}
+            value={playerVolume}
+            onChange={(e) => {
+              setPlayerVolume(e.target.value);
+            }}
+          />
+        </div>
       </div>
     </div>
   );
