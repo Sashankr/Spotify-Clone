@@ -4,10 +4,10 @@ import style from "./MiniPlayer.module.scss";
 import Image from "next/image";
 
 const MiniPlayer = () => {
-  const playerRef = useRef();
-  const songDetails = useSelector((state) => state.currentSong);
-  const [showVolumeControl, setShowVolumeControl] = useState();
-  const [playerVolume, setPlayerVolume] = useState(50);
+  const playerRef = useRef<HTMLAudioElement | null>(null);
+  const songDetails = useSelector((state: any) => state.currentSong);
+  const [showVolumeControl, setShowVolumeControl] = useState<boolean>(false);
+  const [playerVolume, setPlayerVolume] = useState<number>(50);
 
   const { name, artistName, songLink, songThumbnail } = songDetails.currentSong;
   const isSongPlaying = songDetails.isSongPlaying;
@@ -15,15 +15,15 @@ const MiniPlayer = () => {
   useEffect(() => {
     if (playerRef.current !== undefined) {
       if (isSongPlaying) {
-        playerRef.current.play();
+        playerRef?.current?.play();
       } else {
-        playerRef.current.pause();
+        playerRef?.current?.pause();
       }
     }
   }, [isSongPlaying, songLink]);
 
   useEffect(() => {
-    if (playerRef.current !== undefined) {
+    if (playerRef.current !== null) {
       playerRef.current.volume = playerVolume / 100;
     }
   }, [playerVolume]);
@@ -85,7 +85,7 @@ const MiniPlayer = () => {
             max={100}
             value={playerVolume}
             onChange={(e) => {
-              setPlayerVolume(e.target.value);
+              setPlayerVolume(Number(e.target.value));
             }}
           />
         </div>
