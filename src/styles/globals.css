@@ -18,3 +18,7 @@ body {
   background-size: cover;
   font-family: "Poppins", sans-serif;
 }
+
+input[type="range"] {
+  accent-color: #1db954;
+}

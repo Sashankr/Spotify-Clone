@@ -12,8 +12,6 @@ const MiniPlayer = () => {
   const { name, artistName, songLink, songThumbnail } = songDetails.currentSong;
   const isSongPlaying = songDetails.isSongPlaying;
 
-  console.log(playerVolume);
-
   useEffect(() => {
     if (playerRef.current !== undefined) {
       if (isSongPlaying) {
@@ -67,7 +65,15 @@ const MiniPlayer = () => {
           }}
           className={style["mini-player__volume-control-container"]}
         >
-          <i className="fa-solid fa-volume-low"></i>
+          <i
+            className={`fa-solid ${
+              playerVolume < 30 && playerVolume > 0
+                ? "fa-volume-low"
+                : playerVolume > 30
+                ? "fa-volume-high"
+                : "fa-volume-off"
+            }`}
+          ></i>
           <input
             className={`${
               showVolumeControl
