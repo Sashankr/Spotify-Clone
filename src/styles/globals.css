@@ -22,3 +22,11 @@ body {
 input[type="range"] {
   accent-color: #1db954;
 }
+
+.fa-heart {
+  transition: 0.4s ease;
+}
+
+.fa-heart.liked {
+  color: #1ed760;
+}

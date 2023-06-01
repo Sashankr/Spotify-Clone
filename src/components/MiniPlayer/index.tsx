@@ -5,7 +5,6 @@ import Image from "next/image";
 import {
   pauseCurrentSong,
   playCurrentSong,
-  toggleLike,
 } from "@/redux/features/songs/currentSongSlice";
 import {
   addToLikedSongs,
@@ -16,13 +15,13 @@ const MiniPlayer = () => {
   const playerRef = useRef<HTMLAudioElement | null>(null);
   const dispatch = useDispatch();
   const songDetails = useSelector((state: any) => state.currentSong);
+  const likedSongsList = useSelector((state: any) => state.likedSongs);
   const [showVolumeControl, setShowVolumeControl] = useState<boolean>(false);
   const [playerVolume, setPlayerVolume] = useState<number>(50);
 
   const { name, artistName, songLink, songThumbnail, id } =
     songDetails.currentSong;
   const isSongPlaying = songDetails.isSongPlaying;
-  const isSongLiked = songDetails.isLiked;
 
   useEffect(() => {
     if (playerRef.current !== undefined) {
@@ -50,9 +49,25 @@ const MiniPlayer = () => {
     );
   }
 
+  const isCurrentSongLiked = (songId: number) => {
+    const likedSong = likedSongsList.filter(
+      (item: any) => item?.currentSong?.id === songId
+    );
+    if (likedSong.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const isSongLiked = isCurrentSongLiked(id);
+
   const handleSongLikeButtonClick = (songId: number) => {
-    dispatch(toggleLike(true));
-    if (!isSongLiked) {
+    const likedSong = likedSongsList.filter(
+      (item: any) => item?.currentSong?.id === songId
+    );
+
+    if (likedSong.length === 0) {
       dispatch(addToLikedSongs(songDetails));
     } else {
       dispatch(removeFromLikedSongs({ songId }));
@@ -70,7 +85,7 @@ const MiniPlayer = () => {
           <p>{artistName}</p>
         </div>
         <i
-          className={`fa-solid fa-heart`}
+          className={`fa-solid fa-heart ${isSongLiked ? `liked` : `unliked`}`}
           onClick={() => {
             handleSongLikeButtonClick(id);
           }}
