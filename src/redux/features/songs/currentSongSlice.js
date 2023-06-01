@@ -6,8 +6,10 @@ const initialState = {
     artistName: "",
     songLink: "",
     songThumbnail: "",
+    id: "",
   },
   isSongPlaying: false,
+  isLiked: false,
 };
 
 export const currentSongSlice = createSlice({
@@ -32,10 +34,20 @@ export const currentSongSlice = createSlice({
         isSongPlaying: false,
       };
     },
+    toggleLike: (state, action) => {
+      return {
+        ...state,
+        isLiked: !state.isLiked,
+      };
+    },
   },
 });
 
-export const { updateCurrentSong, playCurrentSong, pauseCurrentSong } =
-  currentSongSlice.actions;
+export const {
+  updateCurrentSong,
+  playCurrentSong,
+  pauseCurrentSong,
+  toggleLike,
+} = currentSongSlice.actions;
 
 export default currentSongSlice.reducer;

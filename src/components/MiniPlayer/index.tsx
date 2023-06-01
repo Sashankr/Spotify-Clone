@@ -1,16 +1,28 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./MiniPlayer.module.scss";
 import Image from "next/image";
+import {
+  pauseCurrentSong,
+  playCurrentSong,
+  toggleLike,
+} from "@/redux/features/songs/currentSongSlice";
+import {
+  addToLikedSongs,
+  removeFromLikedSongs,
+} from "@/redux/features/playlists/likedSongsSlice";
 
 const MiniPlayer = () => {
   const playerRef = useRef<HTMLAudioElement | null>(null);
+  const dispatch = useDispatch();
   const songDetails = useSelector((state: any) => state.currentSong);
   const [showVolumeControl, setShowVolumeControl] = useState<boolean>(false);
   const [playerVolume, setPlayerVolume] = useState<number>(50);
 
-  const { name, artistName, songLink, songThumbnail } = songDetails.currentSong;
+  const { name, artistName, songLink, songThumbnail, id } =
+    songDetails.currentSong;
   const isSongPlaying = songDetails.isSongPlaying;
+  const isSongLiked = songDetails.isLiked;
 
   useEffect(() => {
     if (playerRef.current !== undefined) {
@@ -38,6 +50,15 @@ const MiniPlayer = () => {
     );
   }
 
+  const handleSongLikeButtonClick = (songId: number) => {
+    dispatch(toggleLike(true));
+    if (!isSongLiked) {
+      dispatch(addToLikedSongs(songDetails));
+    } else {
+      dispatch(removeFromLikedSongs({ songId }));
+    }
+  };
+
   return (
     <div className={style["mini-player"]}>
       <div className={style["mini-player__info"]}>
@@ -48,7 +69,12 @@ const MiniPlayer = () => {
           <h5>{name}</h5>
           <p>{artistName}</p>
         </div>
-        <i className="fa-solid fa-heart"></i>
+        <i
+          className={`fa-solid fa-heart`}
+          onClick={() => {
+            handleSongLikeButtonClick(id);
+          }}
+        ></i>
         <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
           <g fill="currentColor" fill-rule="evenodd">
             <path

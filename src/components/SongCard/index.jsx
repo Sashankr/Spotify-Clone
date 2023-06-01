@@ -7,7 +7,7 @@ import {
   updateCurrentSong,
 } from "@/redux/features/songs/currentSongSlice";
 
-const SongCard = ({ imageSrc, songSource, songName, artistName }) => {
+const SongCard = ({ imageSrc, songSource, songName, artistName, songId }) => {
   const dispatch = useDispatch();
 
   const handleSongChange = () => {
@@ -17,6 +17,7 @@ const SongCard = ({ imageSrc, songSource, songName, artistName }) => {
         artistName: artistName,
         songLink: songSource,
         songThumbnail: imageSrc,
+        id: songId,
       })
     );
     dispatch(playCurrentSong());

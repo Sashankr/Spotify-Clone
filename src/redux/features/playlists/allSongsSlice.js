@@ -1,4 +1,6 @@
-export const homePageSongsList = [
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = [
   {
     id: 1,
     name: "Storm Clouds",
@@ -38,3 +40,16 @@ export const homePageSongsList = [
     artist: "Ghostrifter Official",
   },
 ];
+
+const allSongsSlice = createSlice({
+  name: "allSongs",
+  initialState,
+  reducers: {
+    updateAllSongs: (state, action) => {
+      return [...state, action.payload];
+    },
+  },
+});
+
+export const { updateAllSongs } = allSongsSlice.actions;
+export default allSongsSlice.reducer;

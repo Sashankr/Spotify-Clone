@@ -3,8 +3,11 @@ import Image from "next/image";
 import SongCard from "../components/SongCard";
 import styles from "@/styles/Home.module.scss";
 import { homePageSongsList } from "../helpers/mock";
+import { useSelector } from "react-redux";
 
 export default function Home() {
+  const songsList = useSelector((state: any) => state.allSongs);
+
   return (
     <>
       <Head>
@@ -16,7 +19,7 @@ export default function Home() {
       <main className={styles.home}>
         <h1>Recently played</h1>
         <section className={styles["home__recently-played"]}>
-          {homePageSongsList.map((item) => {
+          {songsList.map((item: any) => {
             return (
               <SongCard
                 key={item.id}
@@ -24,6 +27,7 @@ export default function Home() {
                 songName={item.name}
                 artistName={item.artist}
                 songSource={item.source}
+                songId={item.id}
               />
             );
           })}
