@@ -31,3 +31,7 @@ input[type="range"] {
   color: #1ed760;
   cursor: pointer;
 }
+
+.mini-player-volume-icon {
+  width: 32px;
+}

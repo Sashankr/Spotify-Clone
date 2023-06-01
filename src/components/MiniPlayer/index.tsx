@@ -117,7 +117,7 @@ const MiniPlayer = () => {
           className={style["mini-player__volume-control-container"]}
         >
           <i
-            className={`fa-solid ${
+            className={`fa-solid mini-player-volume-icon ${
               playerVolume < 30 && playerVolume > 0
                 ? "fa-volume-low"
                 : playerVolume > 30

@@ -17,6 +17,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    width: 300px;
   }
 
   &__song-details {
@@ -52,6 +53,10 @@
   &__volume-control {
     opacity: 0;
     transition: 0.4s ease;
+
+    .mini-player-volume-icon {
+      width: 32px;
+    }
   }
 
   &__volume-control.active {
