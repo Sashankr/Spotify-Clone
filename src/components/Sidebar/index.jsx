@@ -2,11 +2,14 @@ import React from "react";
 import styles from "./Sidebar.module.scss";
 import Image from "next/image";
 import LikedSongsLogo from "../../assets/liked-songs.png";
+import { useRouter } from "next/router";
 
 const Sidebar = () => {
+  const router = useRouter();
+
   return (
     <div className={styles.sidebar}>
-      <div className={styles["sidebar__logo-container"]}>
+      <div className={styles["sidebar__main-logo-container"]}>
         <svg viewBox="0 0 1134 340" className={styles["sidebar__logo"]}>
           <title>Spotify</title>
           <path
@@ -15,7 +18,12 @@ const Sidebar = () => {
           ></path>
         </svg>
       </div>
-      <div className={styles["sidebar__logo-container"]}>
+      <div
+        className={styles["sidebar__logo-container"]}
+        onClick={() => {
+          router.push("/");
+        }}
+      >
         <svg
           role="img"
           height="24"
@@ -32,7 +40,12 @@ const Sidebar = () => {
         </svg>
         <span>Home</span>
       </div>
-      <div className={styles["sidebar__logo-container"]}>
+      <div
+        className={styles["sidebar__logo-container"]}
+        onClick={() => {
+          router.push("/liked-songs");
+        }}
+      >
         <div className={styles["sidebar__logo-image-container"]}>
           <Image src={LikedSongsLogo} alt="liked songs" fill />
         </div>
