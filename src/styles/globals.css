@@ -29,4 +29,5 @@ input[type="range"] {
 
 .fa-heart.liked {
   color: #1ed760;
+  cursor: pointer;
 }
