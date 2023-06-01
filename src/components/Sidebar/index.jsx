@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Sidebar.module.scss";
 import Image from "next/image";
-import SpotifyDesktopLogo from "../../assets/Spotify_Logo_RGB_White.png";
+import LikedSongsLogo from "../../assets/liked-songs.png";
 
 const Sidebar = () => {
   return (
@@ -31,6 +31,12 @@ const Sidebar = () => {
           ></path>
         </svg>
         <span>Home</span>
+      </div>
+      <div className={styles["sidebar__logo-container"]}>
+        <div className={styles["sidebar__logo-image-container"]}>
+          <Image src={LikedSongsLogo} alt="liked songs" fill />
+        </div>
+        <span>Liked</span>
       </div>
       {/* <div className={styles["sidebar__logo-container"]}>
         <svg
